@@ -3,6 +3,7 @@
    License: none (public domain)
 */
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -186,3 +187,30 @@ footer nav ul {
 	margin: 2em
 }
 
+.filtres {
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	gap: 10px;
+	margin: 8px 0px 50px 0px;
+}
+
+.btn-filtrer{
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 16px;
+	color: #1D6154;
+	background-color: white;
+	padding: 0px 20px 0px 20px ;
+	width: auto;
+	height: 37px;
+	text-align: center;
+	border-radius: 60px ;
+	border: #1D6154 2px solid;
+	border-color: #1D6154;
+}
+
+.btn-filtrer:hover{
+	color: white;
+	background-color: #1D6154;
+}
