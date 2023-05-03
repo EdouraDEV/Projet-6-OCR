@@ -1,3 +1,5 @@
 {
-  "liveServer.settings.port": 5501
+  "liveServer.settings.port": 5501,
+  "CodeGPT.model": "gpt-4",
+  "CodeGPT.query.language": "French"
 }

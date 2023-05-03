@@ -11,10 +11,15 @@
 		rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script type="module" src="script.js"></script>
+	<script src="https://kit.fontawesome.com/5420a2db7e.js" crossorigin="anonymous"></script>
+	<script type="module" src="./assets/script.js"></script>
 </head>
 
 <body>
+	<div class="top-container">
+		<div id="top-icon"><i class="fa-sharp fa-regular fa-pen-to-square"></i></div>
+		<p class="ad-modifier"> Mode édition </p> <button class="btn-public">Publier les changements</button>
+	</div>
 	<header>
 		<h1>
 			<a id="btn-accueil" href="./index.html">Sophie Bluel <span>Architecte d'intérieur</span></a>
@@ -28,12 +33,19 @@
 			</ul>
 		</nav>
 	</header>
+
 	<main>
 		<section id="introduction">
 			<figure>
 				<img src="./assets/images/sophie-bluel.png" alt="">
+				<div class="modifier-kit-mid"><span class="ad-modifier-page"><i
+							class="fa-sharp fa-regular fa-pen-to-square"></i> modifier </span></p>
+				</div>
 			</figure>
 			<article>
+				<div class="modifier-kit-top"><span class="ad-modifier-page"><i
+							class="fa-sharp fa-regular fa-pen-to-square"></i> modifier </span></p>
+				</div>
 				<h2>Designer d'espace</h2>
 				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
 					finale du chantier.</p>
@@ -44,8 +56,31 @@
 					décorateur(trice)</p>
 			</article>
 		</section>
+
 		<section id="portfolio">
-			<h2>Mes Projets</h2>
+			<div class="title-and-mod">
+				<h2>Mes Projets</h2>
+				<div class="modifier-kit-bot"><i class="fa-sharp fa-solid fa-pen-to-square"></i><a href="#modal1"
+						class="js-modal"><span class="ad-modifier-page"> modifier </span></a></div>
+			</div>
+			<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-modal="false"
+				aria-labelledby="titleModal" style="display:none;">
+				<div class="modal-wrapper js-modal-stop">
+					<div class="modal-nav">
+						<button class="js-modal-close">X</button>
+					</div>
+					<div class="modal-container">
+						<h3 id="titleModal"> Galerie photo</h3>
+					</div>
+					<div class="bottom-content">
+						<button class="btn-add-modal">Ajouter une photo</button>
+						<p class="delete-all-gallery">Supprimer la galerie</p>
+					</div>
+				</div>
+
+			</aside>
+
+			<!--Filters Button-->
 			<div id="filtres">
 				<button id="all" class="btn-filtrer">Tous</button>
 				<button id="objects" class=" btn-filtrer ">Objets</button>
@@ -55,6 +90,8 @@
 			<div class="gallery">
 			</div>
 		</section>
+
+		<!--Formulaire de contact-->
 		<section id="contact">
 			<h2>Contact</h2>
 			<p>Vous avez un projet ? Discutons-en !</p>
@@ -78,5 +115,6 @@
 		</nav>
 	</footer>
 </body>
+<script src="./assets/adminApp.js"></script>
 
 </html>

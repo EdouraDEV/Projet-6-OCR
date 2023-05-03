@@ -1,3 +1,26 @@
+function checkAccess() {
+  const topContainer = document.querySelector(".top-container");
+  const kitMid = document.querySelector(".modifier-kit-mid");
+  const kitTop = document.querySelector(".modifier-kit-top");
+  const kitBottom = document.querySelector(".modifier-kit-bot");
+  const headerMargin = document.querySelector("header");
+
+  const token = localStorage.getItem("monToken");
+  if (!token) {
+    topContainer.classList.add("hidden");
+    kitMid.classList.add("hidden");
+    kitTop.classList.add("hidden");
+    kitBottom.classList.add("hidden");
+    headerMargin.style.margin = "50px 0";
+  } else {
+    topContainer.classList.remove("hidden");
+    kitMid.classList.remove("hidden");
+    kitTop.classList.remove("hidden");
+    kitBottom.classList.remove("hidden");
+    headerMargin.style.margin = "80px 0";
+  }
+}
+checkAccess();
 async function importImages() {
   const response = await fetch("http://localhost:5678/api/works");
   const data = await response.json(); /*Récupération des données*/
@@ -32,6 +55,7 @@ filterAll.addEventListener("click", async function () {
   importImages();
 });
 
+/* Afficher les projets "Objets" */
 filterObjet.addEventListener("click", async function () {
   const gallery = document.querySelector(".gallery");
   gallery.innerHTML = "";
@@ -54,7 +78,7 @@ filterObjet.addEventListener("click", async function () {
     gallery.appendChild(div);
   }
 });
-
+/* Afficher les projets "Appartements" */
 filterAppartements.addEventListener("click", async function () {
   const gallery = document.querySelector(".gallery");
   gallery.innerHTML = "";
@@ -69,12 +93,13 @@ filterAppartements.addEventListener("click", async function () {
     title.textContent = image.title;
     img.src = image.imageUrl;
     img.alt = image.title;
+    img.crossOrigin = "anonymous";
     div.appendChild(img);
     div.appendChild(title);
     gallery.appendChild(div);
   }
 });
-
+/* Afficher les projets "hotel & restaurants" */
 filterHotels.addEventListener("click", async function () {
   const gallery = document.querySelector(".gallery");
   gallery.innerHTML = "";
@@ -97,7 +122,9 @@ filterHotels.addEventListener("click", async function () {
     gallery.appendChild(div);
   }
 });
-const buttons = document.querySelectorAll(".btn-projets");
+
+/* Ajout des class pour afficher ou non les projets */
+const buttons = document.querySelectorAll(".btn-filtrer");
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     button.classList.add("active");
