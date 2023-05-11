@@ -27,9 +27,8 @@ form.addEventListener("submit", async (event) => {
     localStorage.setItem("monToken", data.token);
     window.location.href = "./index.html";
   } else {
+    const passwordInput = document.getElementById("password");
+    passwordInput.classList.add("incorrect-password");
     console.error("Erreur lors de la connexion");
   }
-
-  // Rediriger l'utilisateur vers une autre page (ici, la page d'accueil)
-  /*window.location.href = "./index.html";*/
 });

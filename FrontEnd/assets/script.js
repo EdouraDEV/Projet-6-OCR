@@ -4,6 +4,8 @@ function checkAccess() {
   const kitTop = document.querySelector(".modifier-kit-top");
   const kitBottom = document.querySelector(".modifier-kit-bot");
   const headerMargin = document.querySelector("header");
+  const btnLogin = document.getElementById("btn-login");
+  const btnLogout = document.getElementById("btn-logout");
 
   const token = localStorage.getItem("monToken");
   if (!token) {
@@ -11,12 +13,16 @@ function checkAccess() {
     kitMid.classList.add("hidden");
     kitTop.classList.add("hidden");
     kitBottom.classList.add("hidden");
+    btnLogout.classList.add("hidden");
+    btnLogin.classList.remove("hidden");
     headerMargin.style.margin = "50px 0";
   } else {
     topContainer.classList.remove("hidden");
     kitMid.classList.remove("hidden");
     kitTop.classList.remove("hidden");
     kitBottom.classList.remove("hidden");
+    btnLogout.classList.remove("hidden");
+    btnLogin.classList.add("hidden");
     headerMargin.style.margin = "80px 0";
   }
 }
@@ -136,3 +142,8 @@ buttons.forEach((button) => {
     });
   });
 });
+function logout() {
+  localStorage.removeItem("monToken");
+}
+targetLogout = document.querySelector("#btn-logout");
+targetLogout.addEventListener("click", logout);
