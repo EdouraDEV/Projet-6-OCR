@@ -32,7 +32,8 @@ form.addEventListener("submit", async (event) => {
     event.preventDefault();
     setTimeout(function () {
       passwordInput.classList.remove("incorrect-password");
+      console.error("Erreur lors de la connexion");
+      window.alert("Mauvais mot de passe, veuillez réessayer !");
     }, 300);
-    console.error("Erreur lors de la connexion");
   }
 });
