@@ -4,6 +4,34 @@ const focusableSelector = "button, a , input, textarea";
 let focusables = [];
 let previouslyFocusedElement = null;
 
+async function importImages() {
+  const response = await fetch("http://localhost:5678/api/works");
+  const data = await response.json(); /*Récupération des données*/
+
+  const gallery = document.querySelector(".gallery"); /*Selection du parent*/
+
+  for (const image of data) {
+    /*Déclaration de ma boucle*/
+    const div = document.createElement("div");
+    const img = document.createElement("img");
+    const title = document.createElement("p");
+    title.textContent = image.title;
+    img.src = image.imageUrl; /*la source de l'image est imageUrl*/
+    img.alt = image.title; /*On récupère le titre des images*/
+    img.crossOrigin = "anonymous"; /*Fix du bug d'affichage*/
+    div.appendChild(img); /*importation des images au parent*/
+    div.appendChild(title);
+    gallery.appendChild(div);
+    div.setAttribute("data-id", image.id);
+  }
+}
+function updateGallery() {
+  const gallery = document.querySelector(".gallery");
+  gallery.innerHTML = ""; // Effacer le contenu actuel de la galerie
+
+  // Appel de la fonction importImages pour récupérer les nouvelles données de la galerie
+  importImages();
+}
 /* Ouverture de la boite modale */
 const openModal = function (e) {
   e.preventDefault();
@@ -128,7 +156,8 @@ async function modalLoad() {
         },
       });
       const deletedWorkDiv = button.closest(".work-item");
-      deletedWorkDiv.remove(); // Supprimer le div parent de l'image supprimée
+      deletedWorkDiv.remove();
+      updateGallery(); // Supprimer le div parent de l'image supprimée
     });
   });
 }
@@ -215,6 +244,7 @@ async function createWork() {
       console.log(data);
       modalLoad();
       modalPrevious();
+      updateGallery();
     })
     .catch((error) => {
       console.error("problem with the fetch operation:", error);
