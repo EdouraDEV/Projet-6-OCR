@@ -228,18 +228,21 @@ document.getElementById("my-form").addEventListener("submit", function (event) {
 /* afficher l'image sélectionnée */
 const uploadedImageDiv = document.querySelector("#uploadedimage");
 const fileUpload = document.querySelector("#image");
+const titleUpload = document.querySelector("#title");
 const sendWork = document.querySelector("#valid-photo");
 const hiddenContent = document.querySelector(".hide-content");
 const hiddenTxt = document.querySelector(".image-text");
 const hiddenFormat = document.querySelector(".image-format");
 
-fileUpload.addEventListener("change", getImage);
-
+fileUpload.addEventListener("change", getImage, checkChange);
+titleUpload.addEventListener("change", checkChange);
+function checkChange() {
+  sendWork.style.backgroundColor = "#1D6154";
+}
 function getImage(e) {
   hiddenContent.style.display = "none";
   hiddenTxt.style.display = "none";
   hiddenFormat.style.display = "none";
-  sendWork.style.backgroundColor = "#1D6154";
   console.log(e.target.files[0]);
   console.log("images", e.target.files[0]);
   const imageToProcess = e.target.files[0];
